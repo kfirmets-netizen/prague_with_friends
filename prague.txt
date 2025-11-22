@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>המסע של כפיר, אור, אבינועם ויוסי בפראג: פסטיבל המסופוסט 2026</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        .container {
+            max-width: 900px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #C60C30; /* אדום עמוק */
+            text-align: center;
+            border-bottom: 2px solid #C60C30;
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+        }
+        h2 {
+            color: #005A9C; /* כחול כהה */
+            margin-top: 25px;
+            border-bottom: 1px solid #005A9C;
+            padding-bottom: 5px;
+        }
+        h3 {
+            color: #333;
+            margin-top: 15px;
+        }
+        .day {
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+        }
+        .activity {
+            margin-bottom: 10px;
+            list-style-type: none;
+            padding-right: 0;
+        }
+        .activity:before {
+            content: "•";
+            color: #C60C30;
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-right: -1em;
+        }
+        .highlight {
+            font-weight: bold;
+            color: #C60C30;
+        }
+        footer {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 15px;
+            border-top: 1px solid #ddd;
+            font-size: 0.9em;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>🇨🇿 המסע של כפיר, אור, אבינועם ויוסי בפראג: חגיגות המסופוסט 2026 🍻</h1>
+    
+    <p>ברוכים הבאים למסלול הטיול של כפיר, אור, אבינועם ויוסי. אנחנו הולכים לכבוש את פראג עם הרבה הליכות, אוכל משובח, מסעדות מומלצות ואווירת חג!</p>
+
+    <div class="day">
+        <h2>🗓️ יום 1: חמישי, 26 בפברואר – נחיתה וכיכר העיר העתיקה</h2>
+        
+        <ul>
+            <li class="activity"><span class="highlight">בוקר:</span> נחיתה בפראג, העברה למלון והתארגנות קצרה.</li>
+            <li class="activity"><span class="highlight">צהריים:</span> צהריים מסורתיים צ'כיים. מומלץ: מסעדת <span class="highlight">Lokál Dlouhááá</span> (קלאסיקה צ'כית ובירה מצוינת).</li>
+            <li class="activity">סיור רגלי ב<span class="highlight">כיכר העיר העתיקה</span> (Staroměstské náměstí) – שעון אסטרונומי וקתדרלת טין.</li>
+            <li class="activity"><span class="highlight">אחר הצהריים/ערב:</span> התחלת חוויית המסופוסט! פסטיבל "Masopust" הוא הקרנבל שלפני הצום. חפשו אירועים מקומיים עם מצעדים, מוזיקה ודוכני אוכל רחוב חגיגיים, במיוחד באזורים כמו <span class="highlight">Žižkov</span> (איפה שהפסטיבל חזק).</li>
+            <li class="activity"><span class="highlight">ארוחת ערב ובילוי:</span> ארוחת ערב במסעדה טובה (למשל, <span class="highlight">Eska</span> לחוויה יצירתית ומודרנית יותר). אח"כ, בילוי בבר קוקטיילים טרנדי ברובע החדש (למשל <span class="highlight">Hemingway Bar</span>).</li>
+        </ul>
+    </div>
+
+    <div class="day">
+        <h2>🗓️ יום 2: שישי, 27 בפברואר – גשר קארל, מצודת פראג והרובע הקטן</h2>
+        
+        <ul>
+            <li class="activity"><span class="highlight">בוקר:</span> הליכה על <span class="highlight">גשר קארל</span> (Charles Bridge) בשעה מוקדמת יחסית לפני ההמולה.</li>
+            <li class="activity">טיפוס לכיוון <span class="highlight">מצודת פראג</span> (Prague Castle) – ביקור בקתדרלת ויטוס הקדוש וסמטת הזהב. <span class="highlight">נוף מדהים</span> לצילום משותף של כפיר, אור, אבינועם ויוסי!</li>
+            <li class="activity"><span class="highlight">צהריים:</span> ארוחת צהריים ברובע הקטן (<span class="highlight">Malá Strana</span>) – אווירה ציורית ומסעדות נעימות.</li>
+            <li class="activity"><span class="highlight">אחר הצהריים:</span> שיטוט נינוח ברובע הקטן, ביקור ב<span class="highlight">קיר לנון</span>.</li>
+            <li class="activity"><span class="highlight">ערב:</span> ארוחת ערב מפנקת באחת המסעדות המומלצות, למשל מסעדת <span class="highlight">Field</span> (מסעדת מישלן אם רוצים להשקיע) או <span class="highlight">La Degustation Bohême Bourgeoise</span> (גם מישלן).</li>
+            <li class="activity"><span class="highlight">לילה:</span> בילוי עם בירה צ'כית ב<span class="highlight">Pivovarský dům</span> (מבשלת בירה עם טעמים מיוחדים) או פאב קלאסי.</li>
+        </ul>
+    </div>
+
+    <div class="day">
+        <h2>🗓️ יום 3: שבת, 28 בפברואר – הרובע היהודי, קניות וקולינריה</h2>
+        
+        <ul>
+            <li class="activity"><span class="highlight">בוקר:</span> סיור ב<span class="highlight">רובע היהודי</span> (Josefov) – בתי כנסת ובית הקברות. זהו אחד הרובעים היפים בפראג.</li>
+            <li class="activity"><span class="highlight">צהריים:</span> צהריים קלילים – אוכל רחוב איכותי. מומלץ לבדוק את <span class="highlight">Dyzajn market</span> (אם יש אירוע בסופ"ש) או שווקי איכרים ליד הנהר (Náplavka).</li>
+            <li class="activity">הליכה רגלית לאורך ה<span class="highlight">נהר ולטאבה</span> עד ל<span class="highlight">בית הרוקד</span>.</li>
+            <li class="activity"><span class="highlight">אחר הצהריים:</span> זמן לקניות (בסביבת <span class="highlight">כיכר ואצלב</span>) או ביקור במוזיאון (למשל <span class="highlight">מוזיאון הקומוניזם</span>).</li>
+            <li class="activity"><span class="highlight">ערב:</span> ארוחת ערב איכותית ומודרנית. מומלץ: מסעדת <span class="highlight">CottoCrudo</span> (איטלקית יוקרתית) או <span class="highlight">George Prime Steak</span> (לאוהבי הבשר).</li>
+            <li class="activity"><span class="highlight">בילוי:</span> ערב פאבים ושתייה. מומלץ אזור <span class="highlight">וינוהרדי</span> (Vinohrady) לפאבים שכונתיים שקטים יותר או <span class="highlight">Žižkov</span> לאווירה בוהמית.</li>
+        </ul>
+    </div>
+
+    <div class="day">
+        <h2>🗓️ יום 4: ראשון, 1 במרץ – פטישין, המסופוסט ופינוק</h2>
+        
+        <ul>
+            <li class="activity"><span class="highlight">בוקר:</span> עליה ל<span class="highlight">גבעת פטז'ין</span> (Petřín) ברכבל (או ברגל למי שרוצה עוד הליכה!) – תצפית על כל העיר.</li>
+            <li class="activity"><span class="highlight">צהריים:</span> צהריים בסביבת הגבעה או חזרה למרכז.</li>
+            <li class="activity"><span class="highlight">אחר הצהריים:</span> <span class="highlight">המשך חגיגות המסופוסט!</span> זה יום ראשון, שזה יום חזק לאירועים. מומלץ לחפש אירוע מרכזי ברובע <span class="highlight">לטנה</span> (Letná) או ב<span class="highlight">גבעת ויטקוב</span> (Vítkov) עם מצעדים ומוזיקה, ולהתענג על המאכלים המיוחדים של החג (בשרים, נקניקים ועוד).</li>
+            <li class="activity"><span class="highlight">ערב:</span> ארוחת פרידה חגיגית. מומלץ: <span class="highlight">Cantina</span> (מקסיקני מצוין) או <span class="highlight">Sansho</span> (אסייתי מודרני).</li>
+            <li class="activity"><span class="highlight">סיום:</span> בילוי אחרון בבר קוקטיילים/וויסקי שווה (למשל <span class="highlight">Bugsy's Bar</span>) או הופעה/מועדון לפי המצב רוח.</li>
+        </ul>
+    </div>
+
+    <div class="day">
+        <h2>🗓️ יום 5: שני, 2 במרץ – בוקר אחרון וטיסה הביתה</h2>
+        
+        <ul>
+            <li class="activity"><span class="highlight">בוקר:</span> ארוחת בוקר בבית קפה שיקי (למשל <span class="highlight">Café Savoy</span>) או ביקור אחרון בדוכני פסטיבל המסופוסט לאוכל רחוב לפני הצום.</li>
+            <li class="activity">זמן חופשי אחרון: קניית מזכרות, ביקור אחרון בפינה אהובה או סיבוב קצר בפארק.</li>
+            <li class="activity"><span class="highlight">צהריים:</span> צהריים קלילים ואיסוף המזוודות.</li>
+            <li class="activity"><span class="highlight">אחר הצהריים/ערב:</span> העברה לשדה התעופה וטיסה חזרה הביתה.</li>
+        </ul>
+    </div>
+
+    <footer>
+        מסלול זה נבנה עבור כפיר, אור, אבינועם ויוסי על ידי ג'מיני. תיהנו מהאוכל, מההליכות ומהמסופוסט! ✨
+    </footer>
+</div>
+
+</body>
+</html>

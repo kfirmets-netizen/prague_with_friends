@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>המסע של כפיר, אור, אבינועם ויוסי: פראג 2026 🍻</title>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;700;900&family=Rubik:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-color: #C60C30; /* אדום צ'כי */
+            --secondary-color: #1a4c7d; /* כחול עמוק */
+            --accent-gold: #D4AF37; /* זהב יוקרתי */
+            --text-dark: #2c3e50;
+            --text-light: #f8f9fa;
+            --bg-light: #ecf0f1;
+            --transition-speed: 0.4s;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Heebo', sans-serif;
+            line-height: 1.6;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            overflow-x: hidden;
+        }
+
+        /* --- Hero Section (החלק העליון הדרמטי) --- */
+        .hero {
+            /* כאן יש לשים תמונת נוף גדולה של פראג בשם hero-prague.png */
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7)), url('hero-prague.png');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed; /* אפקט גלילה מגניב */
+            height: 70vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: var(--text-light);
+            padding: 20px;
+            position: relative;
+            border-bottom: 8px solid var(--accent-gold);
+        }
+
+        .hero-content h1 {
+            font-family: 'Rubik', sans-serif;
+            font-size: 4em;
+            font-weight: 900;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.5);
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+
+        .hero-content h1 span {
+            color: var(--accent-gold);
+            display: block;
+            font-size: 0.6em;
+            font-weight: 400;
+            margin-top: 10px;
+        }
+
+        .hero-content p {
+            font-size: 1.4em;
+            max-width: 700px;
+            margin: 0 auto;
+            font-weight: 300;
+        }
+        
+        .names-bar {
+            background: var(--secondary-color);
+            color: white;
+            text-align: center;
+            padding: 15px;
+            font-size: 1.2em;
+            font-weight: bold;
+            letter-spacing: 1px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            position: relative;
+            z-index: 10;
+        }
+
+        /* --- Container & Timeline --- */
+        .container {
+            max-width: 900px;
+            margin: 50px auto;
+            padding: 0 20px;
+        }
+
+        /* --- Accordion Design (העיצוב האינטראקטיבי) --- */
+        .day-card {
+            background: white;
+            border-radius: 15px;
+            margin-bottom: 25px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+            overflow: hidden;
+            transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+            border: 1px solid transparent;
+        }
+
+        .day-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+            border-color: var(--accent-gold);
+        }
+
+        /* הכותרת שלחיצה עליה פותחת את היום */
+        .accordion-trigger {
+            background: white;
+            padding: 25px 30px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background var(--transition-speed);
+            border-bottom: 3px solid var(--bg-light);
+        }
+
+        .accordion-trigger:hover {
+            background: #f9f9f9;
+        }
+        
+        .accordion-trigger.active {
+            background: var(--secondary-color);
+            color: white;
+            border-bottom: none;
+        }
+
+        .day-title h2 {
+            font-family: 'Rubik', sans-serif;
+            font-size: 1.5em;
+            margin: 0;
+        }
+        
+        .day-date {
+            font-size: 0.9em;
+            color: var(--primary-color);
+            font-weight: 700;
+            display: block;
+            margin-bottom: 5px;
+        }
+        
+        .accordion-trigger.active .day-date {
+            color: var(--accent-gold);
+        }
+
+        /* האייקון של החץ */
+        .trigger-icon {
+            font-size: 1.5em;
+            transition: transform var(--transition-speed);
+        }
+
+        .accordion-trigger.active .trigger-icon {
+            transform: rotate(180deg);
+            color: var(--accent-gold);
+        }
+
+        /* התוכן המוסתר */
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.6s cubic-bezier(0.25, 0.8, 0.25, 1); /* אנימציית פתיחה חלקה */
+        }
+        
+        .day-details {
+            padding: 30px;
+        }
+
+        /* --- Images within the content --- */
+        .day-image-container {
+            width: 100%;
+            height: 300px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .day-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 1s;
+        }
+        
+        .day-card:hover .day-image {
+            transform: scale(1.05); /* זום עדין על התמונה במעבר עכבר */
+        }
+
+        /* --- Activity List Styling --- */
+        ul.activity-list {
+            list-style: none;
+            padding-top: 20px;
+        }
+
+        li.activity-item {
+            margin-bottom: 20px;
+            padding: 15px;
+            background: var(--bg-light);
+            border-radius: 10px;
+            display: flex;
+            align-items: flex-start;
+            border-right: 4px solid var(--secondary-color);
+            transition: background var(--transition-speed), transform var(--transition-speed);
+        }
+        
+        li.activity-item:hover {
+             background: white;
+             box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+             transform: translateX(-5px);
+        }
+
+        .activity-icon {
+            font-size: 1.8em;
+            margin-left: 15px;
+            min-width: 40px;
+            text-align: center;
+        }
+
+        .activity-text .time {
+            font-weight: 900;
+            color: var(--secondary-color);
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .highlight {
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        /* --- Footer --- */
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            margin-top: 50px;
+            background: var(--text-dark);
+            color: var(--text-light);
+            font-size: 1.1em;
+        }
+        
+        footer span {
+            color: var(--primary-color);
+        }
+
+        /* --- Mobile Responsive Adjustments --- */
+        @media (max-width: 768px) {
+            .hero-content h1 { font-size: 2.5em; }
+            .hero-content p { font-size: 1.1em; }
+            .hero { height: 60vh; }
+            .day-image-container { height: 200px; }
+            .accordion-trigger { padding: 20px; }
+            .day-title h2 { font-size: 1.2em; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="hero">
+        <div class="hero-content">
+            <h1>🇨🇿 פראג 2026 🍻<span>פסטיבל המסופוסט</span></h1>
+            <p>חמישה ימים של אוכל מטורף, בירה שנשפכת כמים, הליכות בסמטאות קסומות ואווירת קרנבל חד פעמית.</p>
+        </div>
+    </header>
+    
+    <div class="names-bar">
+        הנבחרת: כפיר • אור • אבינועם • יוסי
+    </div>
+
+    <div class="container">
+        
+        <article class="day-card">
+            <div class="accordion-trigger active"> <div class="day-title">
+                    <span class="day-date">יום חמישי, 26 בפברואר</span>
+                    <h2>נחיתה, בירה ראשונה ואווירת חג</h2>
+                </div>
+                <div class="trigger-icon">▼</div>
+            </div>
+            <div class="accordion-content" style="max-height: 1000px;"> <div class="day-image-container">
+                    <img src="day1.png" alt="כיכר העיר העתיקה והמסופוסט" class="day-image">
+                </div>
+                <div class="day-details">
+                    <ul class="activity-list">
+                        <li class="activity-item">
+                            <span class="activity-icon">🛬</span>
+                            <div class="activity-text"><span class="time">בוקר:</span> נחיתה בפראג, זריקת מזוודות במלון ויציאה מיידית לעיר.</div>
+                        </li>
+                        <li class="activity-item">
+                            <span class="activity-icon">🥩</span>
+                            <div class="activity-text"><span class="time">צהריים:</span> פתיחת מבערים ב-<span class="highlight">Lokál Dlouhááá</span>. שניצל ענק, גבינה מטוגנת ופילזנר טרייה מהחבית.</div>
+                        </li>
+                        <li class="activity-item">
+                            <span class="activity-icon">🎭</span>
+                            <div class="activity-text"><span class="time">אחה"צ:</span> סיבוב חובה בכיכר העיר העתיקה (השעון והקתדרלה) וכניסה לאווירת ה<span class="highlight">מסופוסט</span>. חפשו את הדוכנים והתחפושות הראשונות באזור ז'יז'קוב (Žižkov).</div>
+                        </li>
+                        <li class="activity-item">
+                            <span class="activity-icon">🍸</span>
+                            <div class="activity-text"><span class="time">ערב ולילה:</span> ארוחת ערב מודרנית ב-<span class="highlight">Eska</span> וסיום הלילה בסטייל בבר הקוקטיילים <span class="highlight">Hemingway Bar</span>.</div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </article>
+
+        <article class="day-card">
+            <div class="accordion-trigger">
+                <div class="day-title">
+                    <span class="day-date">יום שישי, 27 בפברואר</span>
+                    <h2>הקלאסיקות: גשר קארל והמצודה</h2>
+                </div>
+                <div class="trigger-icon">▼</div>
+            </div>
+            <div class="accordion-content">
+                <div class="day-image-container">
+                    <img src="day2.png" alt="גשר קארל ומצודת פראג" class="day-image">
+                </div>
+                <div class="day-details">
+                    <ul class="activity-list">
+                        <li class="activity-item">
+                            <span class="activity-icon">🌉</span>
+                            <div class="activity-text"><span class="time">בוקר:</span> השכמה מוקדמת לגשר קארל לפני כל התיירים. משם טיפוס ל<span class="highlight">מצודת פראג</span> (קתדרלת ויטוס וסמטת הזהב) לתמונת נוף קבוצתית מנצחת.</div>
+                        </li>
+                        <li class="activity-item">
+                            <span class="activity-icon">🏘️</span>
+                            <div class="activity-text"><span class="time">צהריים:</span> ארוחה באווירה ציורית ברובע הקטן (Malá Strana) ושיטוט בסמטאות כולל קיר לנון.</div>
+                        </li>
+                        <li class="activity-item">
+                            <span class="activity-icon">🍽️</span>
+                            <div class="activity-text"><span class="time">ערב:</span> ארוחת ערב ברמה גבוהה. אם בא לכם להתפנק - מסעדת מישלן כמו <span class="highlight">Field</span>.</div>
+                        </li>
+                        <li class="activity-item">
+                            <span class="activity-icon">🍻</span>
+                            <div class="activity-text"><span class="time">לילה:</span> חזרה לבסיס - בירה צ'כית מיוחדת ב-<span class="highlight">Pivovarský dům</span> או פאב מקומי אותנטי.</div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </article>
+
+        <article class="day-card">
+            <div class="accordion-trigger">
+                <div class="day-title">
+                    <span class="day-date">יום שבת, 28 בפברואר</span>
+                    <h2>הרובע היהודי, שווקים וסטייק טוב</h2>
+                </div>
+                <div class="trigger-icon">▼</div>
+            </div>
+            <div class="accordion-content">
+                <div class="day-image-container">
+                    <img src="day3.png" alt="הרובע היהודי בפראג" class="day-image">
+                </div>
+                <div class="day-details">
+                    <ul class="activity-list">
+                        <li class="activity-item">
+                            <span class="activity-icon">🕍</span>
+                            <div class="activity-text"><span class="time">בוקר:</span> סיור ברובע היהודי (יוספוב) המרשים - בתי הכנסת ובית הקברות העתיק.</div>
+                        </li>
+                        <li class="activity-item">
+                            <span class="activity-icon">🥨</span>
+                            <div class="activity-text"><span class="time">צהריים:</span> אוכל רחוב! חפשו את שוק האיכרים על הנהר (Náplavka) או שוק מעצבים (Dyzajn market) אם פתוח. הליכה עד "הבית הרוקד".</div>
+                        </li>
+                        <li class="activity-item">
+                            <span class="activity-icon">🛍️</span>
+                            <div class="activity-text"><span class="time">אחה"צ:</span> זמן חופשי לקניות באזור כיכר ואצלב או קפיצה למוזיאון הקומוניזם.</div>
+                        </li>
+                        <li class="activity-item">
+                            <span class="activity-icon">🥩</span>
+                            <div class="activity-text"><span class="time">ערב:</span> ארוחת בשרים רצינית ב-<span class="highlight">George Prime Steak</span> או איטלקית יוקרתית ב-CottoCrudo.</div>
+                        </li>
+                        <li class="activity-item">
+                            <span class="activity-icon">🌃</span>
+                            <div class="activity-text"><span class="time">לילה:</span> יוצאים לבלות בשכונות המגניבות - וינוהרדי (Vinohrady) לפאבים רגועים או ז'יז'קוב לאווירה בוהמית.</div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </article>
+
+         <article class="day-card">
+            <div class="accordion-trigger">
+                <div class="day-title">
+                    <span class="day-date">יום ראשון, 1 במרץ</span>
+                    <h2>תצפיות, שיא הפסטיבל וחגיגת סיום</h2>
+                </div>
+                <div class="trigger-icon">▼</div>
+            </div>
+            <div class="accordion-content">
+                <div class="day-image-container">
+                    <img src="day4.png" alt="גבעת פטז'ין ופסטיבל המסופוסט" class="day-image">
+                </div>
+                <div class="day-details">
+                    <ul class="activity-list">
+                        <li class="activity-item">
+                            <span class="activity-icon">🏞️</span>
+                            <div class="activity-text"><span class="time">בוקר:</span> עליה ברכבל (או ברגל לשריפת קלוריות) לגבעת פטז'ין ותצפית ממגדל ה"אייפל" הקטן על כל העיר.</div>
+                        </li>
+                        <li class="activity-item">
+                            <span class="activity-icon">🎭</span>
+                            <div class="activity-text"><span class="time">אחה"צ - שיא המסופוסט!</span> זה היום החזק. חפשו את התהלוכות המרכזיות (למשל בלטנה או ויטקוב). הרבה אוכל רחוב מסורתי, נקניקים, בירה ומוזיקה.</div>
+                        </li>
+                        <li class="activity-item">
+                            <span class="activity-icon">🌮</span>
+                            <div class="activity-text"><span class="time">ערב:</span> ארוחת פרידה חגיגית. שוברים שגרה עם מקסיקני מעולה ב-<span class="highlight">Cantina</span> או אסייתי מודרני ב-Sansho.</div>
+                        </li>
+                        <li class="activity-item">
+                            <span class="activity-icon">🥃</span>
+                            <div class="activity-text"><span class="time">לילה:</span> דרינק אחרון ואיכותי ב-Bugsy's Bar או מועדון לסיום חזק.</div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </article>
+
+         <article class="day-card">
+            <div class="accordion-trigger">
+                <div class="day-title">
+                    <span class="day-date">יום שני, 2 במרץ</span>
+                    <h2>קפה של בוקר והביתה</h2>
+                </div>
+                <div class="trigger-icon">▼</div>
+            </div>
+            <div class="accordion-content">
+                <div class="day-image-container">
+                    <img src="day5.png" alt="בית קפה בפראג" class="day-image">
+                </div>
+                <div class="day-details">
+                    <ul class="activity-list">
+                        <li class="activity-item">
+                            <span class="activity-icon">☕</span>
+                            <div class="activity-text"><span class="time">בוקר:</span> ארוחת בוקר מפנקת ב-<span class="highlight">Café Savoy</span> המפואר, או סיבוב אחרון בדוכני הפסטיבל לטעימה אחרונה.</div>
+                        </li>
+                        <li class="activity-item">
+                            <span class="activity-icon">🎁</span>
+                            <div class="activity-text"><span class="time">המשך הבוקר:</span> השלמת מזכרות, או סתם ישיבה אחרונה בפארק וספיגת האווירה.</div>
+                        </li>
+                        <li class="activity-item">
+                            <span class="activity-icon">✈️</span>
+                            <div class="activity-text"><span class="time">צהריים:</span> איסוף מזוודות, העברה לשדה התעופה וטיסה חזרה הביתה.</div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </article>
+
+    </div>
+
+    <footer>
+        נוצר באהבה עבור כפיר, אור, אבינועם ויוסי. <br>
+        תעשו חיים משוגעים ותאכלו מלא! <span>Na zdraví!</span> (לחיים!)
+    </footer>
+
+    <script>
+        const triggers = document.querySelectorAll('.accordion-trigger');
+
+        triggers.forEach(trigger => {
+            trigger.addEventListener('click', () => {
+                // סגירת כל הימים האחרים (אופציונלי - אם רוצים שרק אחד יהיה פתוח)
+                triggers.forEach(otherTrigger => {
+                    if (otherTrigger !== trigger && otherTrigger.classList.contains('active')) {
+                        otherTrigger.classList.remove('active');
+                        otherTrigger.nextElementSibling.style.maxHeight = null;
+                    }
+                });
+
+                // פתיחה/סגירה של היום הנוכחי
+                trigger.classList.toggle('active');
+                const content = trigger.nextElementSibling;
+                
+                if (trigger.classList.contains('active')) {
+                    // קובע את הגובה המקסימלי לפי גובה התוכן האמיתי
+                    content.style.maxHeight = content.scrollHeight + "px";
+                } else {
+                    content.style.maxHeight = null;
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
