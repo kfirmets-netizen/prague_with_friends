@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>המסע של כפיר, אור, אבינועם ויוסי: פראג 2026 🍻</title>
-    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;700;900&family=Rubik:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;700;900&family=Rubik:wght=400;700&display=swap" rel="stylesheet">
     
     <style>
         :root {
@@ -14,7 +14,6 @@
             --text-dark: #2c3e50;
             --text-light: #f8f9fa;
             --bg-light: #ecf0f1;
-            --flight-bg: #eef2f3;
             --transition-speed: 0.4s;
         }
 
@@ -34,7 +33,6 @@
 
         /* --- Hero Section --- */
         .hero {
-            /* שימו לב: הקובץ הוא כעת PNG */
             background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7)), url('hero-prague.png');
             background-size: cover;
             background-position: center;
@@ -125,14 +123,79 @@
             color: #666;
         }
 
-        /* --- Container --- */
+        /* --- Tips Section --- */
+        .tips-section {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 30px;
+            margin-bottom: 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        }
+
+        .tips-section h2 {
+            font-family: 'Rubik', sans-serif;
+            font-size: 2em;
+            text-align: center;
+            margin-bottom: 20px;
+            color: var(--accent-gold);
+        }
+
+        .tips-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .tip-card {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 10px;
+            border-right: 3px solid var(--accent-gold);
+            transition: background-color 0.3s;
+        }
+        
+        .tip-card:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .tip-card h3 {
+            display: flex;
+            align-items: center;
+            font-size: 1.2em;
+            margin-bottom: 10px;
+            color: var(--text-light);
+        }
+
+        .tip-card h3 span {
+            margin-left: 10px;
+            color: var(--accent-gold);
+        }
+
+        .tip-card p, .tip-card ul {
+            font-size: 0.95em;
+            line-height: 1.4;
+            color: var(--text-light);
+        }
+        
+        .tip-card ul {
+            padding-right: 20px;
+            list-style: "🍺"; /* דוגמה לאייקון מותאם אישית */
+        }
+        
+        .tip-card ul li {
+            margin-bottom: 5px;
+        }
+
+
+        /* --- Container & Timeline --- */
         .container {
             max-width: 900px;
             margin: 20px auto;
             padding: 0 20px;
         }
 
-        /* --- Accordion Design --- */
+        /* --- Accordion Design (הוסר למען הקיצור) --- */
         .day-card {
             background: white;
             border-radius: 15px;
@@ -212,13 +275,6 @@
         .activity-text .time { font-weight: 900; color: var(--secondary-color); margin-bottom: 2px; display: block; }
         .highlight { font-weight: 700; color: var(--primary-color); }
 
-        /* --- Footer --- */
-        footer {
-            text-align: center;
-            padding: 40px 20px;
-            background: var(--text-dark);
-            color: var(--text-light);
-        }
 
         @media (max-width: 768px) {
             .logistics-container { grid-template-columns: 1fr; margin-top: 20px; }
@@ -253,7 +309,7 @@
             <div class="logistics-header"><span class="logistics-icon">🏨</span> מלון R16 (Rybná 16)</div>
             <div class="hotel-desc">
                 <p><strong>מיקום אסטרטגי מנצח:</strong> ממוקם ברחוב Rybná בלב העיר העתיקה.</p>
-                <ul style="margin-top:10px; padding-right:20px; font-size:0.9em;">
+                <ul style="margin-top:10px; padding-right:20px; font-size:0.9em; list-style: "🏠";">
                     <li>3 דקות הליכה מכיכר העיר העתיקה.</li>
                     <li>דקה הליכה מכיכר הרפובליקה (קניון פלדיום).</li>
                     <li>קרוב לכל הברים והמסעדות השוות.</li>
@@ -264,6 +320,35 @@
 
     <div class="container">
         
+        <div class="tips-section">
+            <h2>✨ מדריך הישרדות בפראג ✨</h2>
+            <div class="tips-grid">
+                <div class="tip-card">
+                    <h3><span>💰</span> כסף ומטבעות (קרונות)</h3>
+                    <p>השתמשו בכרטיסי אשראי כמה שניתן. אם צריך מזומן: <span class="highlight" style="color: var(--accent-gold);">משכו מכספומט של בנק מקומי (למשל Česká spořitelna)</span> ולא מחברות צד שלישי, או החליפו בודג'ט קטן בצ'יינג'ים לא תיירותיים.</p>
+                </div>
+                <div class="tip-card">
+                    <h3><span>🚇</span> תחבורה ציבורית</h3>
+                    <p>פראג 1 (העיר העתיקה) הכל ברגל. אם צריך: קנו <span class="highlight" style="color: var(--accent-gold);">כרטיס חופשי 72 שעות</span> באפליקציית PID Lítačka או במכונות התחנה. חובה לתקף בכניסה הראשונה!</p>
+                </div>
+                <div class="tip-card">
+                    <h3><span>🧥</span> לבוש (סוף פברואר)</h3>
+                    <p>קר מאוד, סביב 0°C עד 5°C. לבישת <span class="highlight" style="color: var(--accent-gold);">שכבות:</span> תרמי (חובה!), פליז, מעיל מחמם, כפפות, כובע וצעיף. כפפות נוחות להוצאה מהירה לצילום.</p>
+                </div>
+                <div class="tip-card">
+                    <h3><span>🚕</span> נסיעות והגעה משדה התעופה</h3>
+                    <p>הדרך הנוחה ביותר מהשדה: הזמנת <span class="highlight" style="color: var(--accent-gold);">Uber/Bolt</span> דרך האפליקציה (זול ואמין). אפשרות נוספת: האוטובוס המהיר AE לתחנת הרכבת המרכזית (Main Station).</p>
+                </div>
+                <div class="tip-card">
+                    <h3><span>🛎️</span> תרבות מסעדות וטיפים</h3>
+                    <p>במסעדות: הטיפ אינו כלול. <span class="highlight" style="color: var(--accent-gold);">מקובל לעגל למעלה או להוסיף 10%</span> אם השירות היה טוב. בברים ופאבים: אפשר להשאיר עודפים קטנים.</p>
+                </div>
+                <div class="tip-card">
+                    <h3><span>🎟️</span> כרטיסים ואטרקציות</h3>
+                    <p>עדיף <span class="highlight" style="color: var(--accent-gold);">להזמין כרטיסים לאטרקציות מרכזיות באינטרנט</span> מראש (כמו המצודה או מוזיאונים) כדי לדלג על התורים. חוסך זמן יקר!</p>
+                </div>
+            </div>
+        </div>
         <article class="day-card">
             <div class="accordion-trigger active">
                 <div class="day-title">
@@ -420,15 +505,15 @@
                         </li>
                         <li class="activity-item">
                             <span class="activity-icon">🏛️</span>
-                            <div class="activity-text"><span class="time">12:00 צהריים:</span> ביקור ב<span class="highlight">מוזיאון הלאומי</span> (Národní muzeum) בכיכר ואצלב. מבנה מרשים ותערוכות מעולות להעברת הזמן בנעימים.</div>
+                            <div class="activity-text"><span class="time">12:00 צהריים:</span> ביקור ב<span class="highlight">מוזיאון הלאומי</span> (Národní muzeum) בכיכר ואצלב. מבנה מרשים ותערוכות מעולות.</div>
                         </li>
                         <li class="activity-item">
                             <span class="activity-icon">🍖</span>
-                            <div class="activity-text"><span class="time">14:30 צהריים מאוחרת:</span> חווית בשרים ב-<span class="highlight">Kantýna</span>. מקום חובה לאוהבי בשר, קרוב לתחנת הרכבת המרכזית.</div>
+                            <div class="activity-text"><span class="time">14:30 צהריים מאוחרת:</span> חווית בשרים ב-<span class="highlight">Kantýna</span>. מקום חובה לאוהבי בשר, מושלם לפני נסיעה.</div>
                         </li>
                         <li class="activity-item">
                             <span class="activity-icon">🛍️</span>
-                            <div class="activity-text"><span class="time">16:30 אחה"צ:</span> השלמת שופינג אחרון בקניון פלדיום (ממש ליד המלון) או שיטוט אחרון בסמטאות העיר העתיקה.</div>
+                            <div class="activity-text"><span class="time">16:30 אחה"צ:</span> השלמת שופינג אחרון בקניון פלדיום (ליד המלון) או דרינק פרידה בפאב אהוב.</div>
                         </li>
                         <li class="activity-item">
                             <span class="activity-icon">🚕</span>
@@ -454,14 +539,17 @@
         const triggers = document.querySelectorAll('.accordion-trigger');
         triggers.forEach(trigger => {
             trigger.addEventListener('click', () => {
+                // סגירת ימים אחרים
                 triggers.forEach(other => {
                     if (other !== trigger && other.classList.contains('active')) {
                         other.classList.remove('active');
                         other.nextElementSibling.style.maxHeight = null;
                     }
                 });
+                // פתיחת/סגירת היום הנוכחי
                 trigger.classList.toggle('active');
                 const content = trigger.nextElementSibling;
+                // קביעת הגובה המקסימלי (למעבר חלק)
                 content.style.maxHeight = trigger.classList.contains('active') ? content.scrollHeight + "px" : null;
             });
         });
