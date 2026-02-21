@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PRAGUE 2026 | כפיר, אור, אבינועם ויוסי</title>
-    
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700;900&family=Rubik:wght@300;400;600;800&display=swap" rel="stylesheet">
-    
+
     <style>
         :root {
             --primary: #102a43; /* כחול לילה עמוק */
@@ -24,7 +24,7 @@
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        
+
         body {
             font-family: 'Heebo', sans-serif;
             background-color: var(--bg);
@@ -122,7 +122,7 @@
         }
 
         .dash-icon { font-size: 2rem; margin-bottom: 10px; display: block; }
-        .dash-title { font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); color: rgba(255,255,255,0.6); }
+        .dash-title { font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; color: rgba(255,255,255,0.6); }
         .dash-value { font-size: 2.2rem; font-weight: 700; margin: 5px 0; color: var(--gold); font-family: 'Rubik', sans-serif; }
         .dash-sub { font-size: 0.85rem; opacity: 0.8; }
 
@@ -168,7 +168,7 @@
             display: inline-block;
             width: 100%;
         }
-        
+
         .tips-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -181,7 +181,7 @@
             border-radius: 12px;
             text-align: center;
         }
-        
+
         .tip-emoji { font-size: 2rem; margin-bottom: 10px; }
         .tip-text { font-size: 0.9rem; color: var(--text-muted); line-height: 1.5; }
         .tip-highlight { color: var(--primary); font-weight: 700; }
@@ -209,7 +209,7 @@
         }
 
         .day-header:hover { background: #f8f9fa; }
-        
+
         .day-header.active {
             background: var(--primary);
             color: white;
@@ -219,7 +219,7 @@
         .day-date { font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--accent); margin-bottom: 5px; }
         .day-header.active .day-date { color: var(--gold); }
         .day-title { font-family: 'Rubik', sans-serif; font-size: 1.4rem; font-weight: 700; }
-        
+
         .arrow { font-size: 1.5rem; transition: transform 0.4s; }
         .day-header.active .arrow { transform: rotate(180deg); color: var(--gold); }
 
@@ -268,6 +268,26 @@
         .act-desc { font-size: 1rem; color: var(--text-muted); }
         .act-desc strong { color: var(--accent); }
 
+        /* --- DAY WEATHER WIDGET --- */
+        .day-wx {
+            background: linear-gradient(135deg, rgba(16,42,67,0.06), rgba(16,42,67,0.02));
+            border: 1px solid rgba(16,42,67,0.08);
+            border-radius: 12px;
+            padding: 12px 14px;
+            margin: 0 0 18px 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+        }
+        .day-wx .wx-left { display: flex; align-items: center; gap: 10px; }
+        .day-wx .wx-emoji { font-size: 1.35rem; }
+        .day-wx .wx-title { font-weight: 800; color: var(--primary); font-size: 0.95rem; }
+        .day-wx .wx-sub { color: var(--text-muted); font-size: 0.85rem; margin-top: 2px; }
+        .day-wx .wx-right { text-align: left; min-width: 92px; }
+        .day-wx .wx-temp { font-family: 'Rubik', sans-serif; font-weight: 800; color: var(--accent); font-size: 1.2rem; }
+        .day-wx .wx-precip { color: var(--text-muted); font-size: 0.82rem; margin-top: 2px; }
+
         footer {
             text-align: center;
             padding: 40px;
@@ -292,7 +312,7 @@
         <div class="hero-badge">26/02 - 02/03</div>
         <h1>PRAGUE <span>2026</span></h1>
         <p>כפיר • אור • אבינועם • יוסי</p>
-        <p style="font-size: 1rem; margin-top: 5px;">🍻 המסע לפסטיבל המסופוסט</p>
+        <p style="font-size: 1rem; margin-top: 5px;">🍻 סופ״ש פראג: אוכל, בירה וחיי לילה</p>
     </div>
 
     <div class="container">
@@ -302,34 +322,45 @@
                 <span class="dash-icon">💰</span>
                 <div class="dash-title">שער המטבע</div>
                 <div class="dash-value" id="czk-val">...</div>
-                <div class="dash-sub">שקלים לקרונה אחת (1 CZK)</div>
+                <div class="dash-sub" id="czk-sub">שקלים לעשר קרונות (10 CZK)</div>
             </div>
-            
+
             <div class="dash-card">
                 <span class="dash-icon">❄️</span>
-                <div class="dash-title">תחזית (פברואר)</div>
-                <div class="dash-value">2°C</div>
-                <div class="dash-sub">קר מאוד! להביא ביגוד תרמי</div>
+                <div class="dash-title">מזג אוויר (פראג)</div>
+                <div class="dash-value" id="wx-val">...</div>
+                <div class="dash-sub" id="wx-sub">טוען נתונים…</div>
             </div>
 
             <div class="dash-card" style="border-color: var(--gold);">
-                <span class="dash-icon">🎭</span>
-                <div class="dash-title">סטטוס מסופוסט</div>
-                <div class="dash-value">פעיל</div>
-                <div class="dash-sub" style="color: var(--gold);">אירוע שיא ביום א' (01/03)</div>
+                <span class="dash-icon">📍</span>
+                <div class="dash-title">סטטוס התוכנית</div>
+                <div class="dash-value">On</div>
+                <div class="dash-sub" style="color: var(--gold);">עיר עתיקה, אוכל טוב וחיי לילה</div>
             </div>
         </section>
 
         <div class="logistics-grid">
             <div class="info-card">
                 <h3>✈️ טיסות אל על (EL AL)</h3>
+
                 <div class="info-detail">
-                    <strong>הלוך 26/02:</strong> המראה 07:25 (LY2521) <br>נחיתה בבוקר = יום מלא!
+                    <strong>הלוך 26/02:</strong>
+                    המראה <span id="flight-out-dep">07:25</span> (LY2521)
+                    <br>
+                    נחיתה <span id="flight-out-arr">—</span>
+                    <span id="flight-out-status" style="color:#627d98;font-weight:600;"></span>
                 </div>
+
                 <div class="info-detail">
-                    <strong>חזור 02/03:</strong> המראה 22:05 (LY2524) <br>יום ראשון מלא לניצול.
+                    <strong>חזור 02/03:</strong>
+                    המראה <span id="flight-back-dep">22:05</span> (LY2524)
+                    <br>
+                    נחיתה <span id="flight-back-arr">—</span>
+                    <span id="flight-back-status" style="color:#627d98;font-weight:600;"></span>
                 </div>
             </div>
+
             <div class="info-card">
                 <h3>🏨 מלון R16 (Rybná 16)</h3>
                 <div class="info-detail">
@@ -374,8 +405,26 @@
                     </div>
                     <div class="arrow">▼</div>
                 </div>
-                <div class="day-body" style="max-height: 1000px;"> <div class="day-content-wrapper">
+                <div class="day-body" style="max-height: 1000px;">
+                    <div class="day-content-wrapper">
                         <ul class="activities">
+                            <!-- Day Weather Widget -->
+                            <li>
+                                <div class="day-wx" data-date="2026-02-26">
+                                    <div class="wx-left">
+                                        <div class="wx-emoji" data-wx-emoji>⛅</div>
+                                        <div>
+                                            <div class="wx-title">מזג אוויר • 26/02</div>
+                                            <div class="wx-sub" data-wx-desc>טוען…</div>
+                                        </div>
+                                    </div>
+                                    <div class="wx-right">
+                                        <div class="wx-temp" data-wx-temp>—</div>
+                                        <div class="wx-precip" data-wx-precip>—</div>
+                                    </div>
+                                </div>
+                            </li>
+
                             <li class="act-row">
                                 <span class="act-time">11:00</span>
                                 <span class="act-desc">נחיתה והגעה למלון R16 לזריקת מזוודות.</span>
@@ -386,7 +435,7 @@
                             </li>
                             <li class="act-row">
                                 <span class="act-time">16:00</span>
-                                <span class="act-desc">סיבוב קלאסי בכיכר העיר העתיקה וחיפוש דוכני מסופוסט ראשונים.</span>
+                                <span class="act-desc">סיבוב קלאסי בכיכר העיר העתיקה.</span>
                             </li>
                             <li class="act-row">
                                 <span class="act-time">20:00</span>
@@ -402,13 +451,30 @@
                 <div class="day-header">
                     <div class="day-meta">
                         <span class="day-date">שישי 27/02</span>
-                        <span class="day-title">גשר קארל והמצודה</span>
+                        <span class="day-title">גשר קארל והמצודה, ובערב - Karlovy Lazne</span>
                     </div>
                     <div class="arrow">▼</div>
                 </div>
                 <div class="day-body">
                     <div class="day-content-wrapper">
                         <ul class="activities">
+                            <!-- Day Weather Widget -->
+                            <li>
+                                <div class="day-wx" data-date="2026-02-27">
+                                    <div class="wx-left">
+                                        <div class="wx-emoji" data-wx-emoji>⛅</div>
+                                        <div>
+                                            <div class="wx-title">מזג אוויר • 27/02</div>
+                                            <div class="wx-sub" data-wx-desc>טוען…</div>
+                                        </div>
+                                    </div>
+                                    <div class="wx-right">
+                                        <div class="wx-temp" data-wx-temp>—</div>
+                                        <div class="wx-precip" data-wx-precip>—</div>
+                                    </div>
+                                </div>
+                            </li>
+
                             <li class="act-row">
                                 <span class="act-time">09:00</span>
                                 <span class="act-desc">גשר קארל לפני העומס, וטיפוס למצודת פראג.</span>
@@ -421,6 +487,11 @@
                                 <span class="act-time">20:00</span>
                                 <span class="act-desc">ערב יוקרתי: מסעדת <strong>Field</strong> (מישלן) או דומה לה.</span>
                             </li>
+<li class="act-row">
+                                <span class="act-time">20:30</span>
+                                <span class="act-desc"><strong>Karlovy Lazne - Nightclub</strong> (מועדון הלילה הגדול ביותר באירופה).</span>
+                            </li>
+
                         </ul>
                         <img src="day2.png" class="day-img" alt="יום 2">
                     </div>
@@ -431,15 +502,36 @@
                 <div class="day-header">
                     <div class="day-meta">
                         <span class="day-date">שבת 28/02</span>
-                        <span class="day-title">הרובע היהודי וסטייקים</span>
+                        <span class="day-title">שוק איכרים, הרובע היהודי ומועדון ה-Duplex </span>
                     </div>
                     <div class="arrow">▼</div>
                 </div>
                 <div class="day-body">
                     <div class="day-content-wrapper">
                         <ul class="activities">
+                            <!-- Day Weather Widget -->
+                            <li>
+                                <div class="day-wx" data-date="2026-02-28">
+                                    <div class="wx-left">
+                                        <div class="wx-emoji" data-wx-emoji>⛅</div>
+                                        <div>
+                                            <div class="wx-title">מזג אוויר • 28/02</div>
+                                            <div class="wx-sub" data-wx-desc>טוען…</div>
+                                        </div>
+                                    </div>
+                                    <div class="wx-right">
+                                        <div class="wx-temp" data-wx-temp>—</div>
+                                        <div class="wx-precip" data-wx-precip>—</div>
+                                    </div>
+                                </div>
+                            </li>
+
                             <li class="act-row">
-                                <span class="act-time">10:00</span>
+                                <span class="act-time">09:00</span>
+                                <span class="act-desc">בוקר: שוק האיכרים ב-<strong>Naplavka</strong>.</span>
+                            </li>
+                            <li class="act-row">
+                                <span class="act-time">10:30</span>
                                 <span class="act-desc">סיור ברובע היהודי העתיק (מרחק הליכה מהמלון).</span>
                             </li>
                             <li class="act-row">
@@ -451,8 +543,8 @@
                                 <span class="act-desc">קרניבורים? <strong>George Prime Steak</strong>. איטלקית? CottoCrudo.</span>
                             </li>
                             <li class="act-row">
-                                <span class="act-time">23:00</span>
-                                <span class="act-desc">יציאה לפאבים בשכונת וינוהרדי.</span>
+                                <span class="act-time">23:30</span>
+                                <span class="act-desc">מועדון <strong>Duplex</strong> • <strong>Saturday Night Fever</strong>.</span>
                             </li>
                         </ul>
                         <img src="day3.png" class="day-img" alt="יום 3">
@@ -460,28 +552,45 @@
                 </div>
             </article>
 
-             <article class="day-item">
+            <article class="day-item">
                 <div class="day-header">
                     <div class="day-meta">
                         <span class="day-date">ראשון 01/03</span>
-                        <span class="day-title">שיא קרנבל המסופוסט</span>
+                        <span class="day-title">אאוטלט, קניות וערב קזינו</span>
                     </div>
                     <div class="arrow">▼</div>
                 </div>
                 <div class="day-body">
                     <div class="day-content-wrapper">
                         <ul class="activities">
-                            <li class="act-row">
-                                <span class="act-time">10:00</span>
-                                <span class="act-desc">עליה לגבעת פטז'ין לתצפית מגדל האייפל הקטן.</span>
+                            <!-- Day Weather Widget -->
+                            <li>
+                                <div class="day-wx" data-date="2026-03-01">
+                                    <div class="wx-left">
+                                        <div class="wx-emoji" data-wx-emoji>⛅</div>
+                                        <div>
+                                            <div class="wx-title">מזג אוויר • 01/03</div>
+                                            <div class="wx-sub" data-wx-desc>טוען…</div>
+                                        </div>
+                                    </div>
+                                    <div class="wx-right">
+                                        <div class="wx-temp" data-wx-temp>—</div>
+                                        <div class="wx-precip" data-wx-precip>—</div>
+                                    </div>
+                                </div>
                             </li>
+
                             <li class="act-row">
-                                <span class="act-time">13:00</span>
-                                <span class="act-desc"><strong>חגיגות המסופוסט בשיאן!</strong> מתחברים למצעדים באזור לטנה או ויטקוב. הרבה בירה ואוכל רחוב.</span>
+                                <span class="act-time">09:00</span>
+                                <span class="act-desc">נסיעה בבוקר ל-<strong>Fashion Arena Prague Outlet</strong>. <strong>צפוי גשם</strong> — יתרון לנצל את היום לקניות.</span>
                             </li>
                             <li class="act-row">
                                 <span class="act-time">20:00</span>
-                                <span class="act-desc">ארוחת פרידה: מקסיקני ב-<strong>Cantina</strong> או אסייתי ב-Sansho.</span>
+                                <span class="act-desc">ארוחת ערב: מקסיקני ב-<strong>Cantina</strong> או אסייתי ב-Sansho.</span>
+                            </li>
+                            <li class="act-row">
+                                <span class="act-time">22:30</span>
+                                <span class="act-desc">ביקור ערב ב-<strong>Casino Ambassador</strong>.</span>
                             </li>
                         </ul>
                         <img src="day4.png" class="day-img" alt="יום 4">
@@ -500,6 +609,23 @@
                 <div class="day-body">
                     <div class="day-content-wrapper">
                         <ul class="activities">
+                            <!-- Day Weather Widget -->
+                            <li>
+                                <div class="day-wx" data-date="2026-03-02">
+                                    <div class="wx-left">
+                                        <div class="wx-emoji" data-wx-emoji>⛅</div>
+                                        <div>
+                                            <div class="wx-title">מזג אוויר • 02/03</div>
+                                            <div class="wx-sub" data-wx-desc>טוען…</div>
+                                        </div>
+                                    </div>
+                                    <div class="wx-right">
+                                        <div class="wx-temp" data-wx-temp>—</div>
+                                        <div class="wx-precip" data-wx-precip>—</div>
+                                    </div>
+                                </div>
+                            </li>
+
                             <li class="act-row">
                                 <span class="act-time">09:30</span>
                                 <span class="act-desc">צ'ק אאוט (משאירים מזוודות במלון). ארוחת בוקר מלכותית ב-<strong>Café Savoy</strong>.</span>
@@ -516,6 +642,7 @@
                                 <span class="act-time">19:00</span>
                                 <span class="act-desc">איסוף מזוודות מהמלון ונסיעה לשדה התעופה.</span>
                             </li>
+                            
                             <li class="act-row">
                                 <span class="act-time">22:05</span>
                                 <span class="act-desc">המראה חזרה לתל אביב (LY2524).</span>
@@ -526,17 +653,105 @@
                 </div>
             </article>
 
-        </div> </div> <footer>
+        </div>
+    </div>
+
+    <footer>
         <p>© 2026 נבנה עבור כפיר, אור, אבינועם ויוסי | Na zdraví! 🍻</p>
     </footer>
 
     <script>
-        // 1. אקורדיון
+        // =========================================
+        // 0) הגדרות
+        // =========================================
+        const TRIP = {
+            city: "Prague",
+            lat: 50.0755,
+            lon: 14.4378,
+            timezone: "Europe/Prague",
+            startDate: "2026-02-26",
+            endDate: "2026-03-02",
+            flights: {
+                outbound: {
+                    // אל תשנה פה את התאריך/מספר טיסה בלי סיבה.
+                    // נתוני שדה תעופה נדרשים ל-aviationstack flightsFuture/timetable
+                    flightNumber: "2521",     // מספר טיסה בלבד
+                    airlineIata: "LY",        // אל על
+                    depAirportIata: "TLV",
+                    arrAirportIata: "PRG",
+                    date: "2026-02-26",
+                    ui: { depId: "flight-out-dep", arrId: "flight-out-arr", statusId: "flight-out-status" }
+                },
+                inbound: {
+                    flightNumber: "2524",
+                    airlineIata: "LY",
+                    depAirportIata: "PRG",
+                    arrAirportIata: "TLV",
+                    date: "2026-03-02",
+                    ui: { depId: "flight-back-dep", arrId: "flight-back-arr", statusId: "flight-back-status" }
+                }
+            }
+        };
+
+        // =========================================
+        // 🔑 Aviationstack API Key (שים מפתח שלך)
+        // =========================================
+        const AVIATIONSTACK_API_KEY = "81a63b2731c7d0dfd08f9c40d0d8c429";
+
+        // אם יש לך בעיות CORS עם fetch בדפדפן, הקוד ינסה JSONP אוטומטית.
+        // JSONP עובד רק אם הקובץ נפתח דרך http/https (לא תמיד נוח ב-file://).
+
+        // =========================================
+        // Utils
+        // =========================================
+        function $(id) { return document.getElementById(id); }
+
+        function pad2(n) { return String(n).padStart(2, "0"); }
+
+        function toISODate(dateStr) {
+            // dateStr expected YYYY-MM-DD (כמו שהגדרנו)
+            return dateStr;
+        }
+
+        function daysFromToday(dateStr) {
+            const now = new Date();
+            const target = new Date(dateStr + "T00:00:00");
+            const diffMs = target.getTime() - now.getTime();
+            return Math.floor(diffMs / (1000 * 60 * 60 * 24));
+        }
+
+        function safeSetText(id, text) {
+            const el = $(id);
+            if (el) el.textContent = text;
+        }
+
+        function fmtHM(isoLike) {
+            if (!isoLike) return "—";
+            const d = new Date(isoLike);
+            if (isNaN(d.getTime())) return "—";
+            return `${pad2(d.getHours())}:${pad2(d.getMinutes())}`;
+        }
+
+        function pick(obj, paths) {
+            for (const p of paths) {
+                const parts = p.split(".");
+                let cur = obj;
+                let ok = true;
+                for (const part of parts) {
+                    if (cur && Object.prototype.hasOwnProperty.call(cur, part)) cur = cur[part];
+                    else { ok = false; break; }
+                }
+                if (ok && cur != null) return cur;
+            }
+            return null;
+        }
+
+        // =========================================
+        // 1) אקורדיון (כמו שהיה)
+        // =========================================
         const headers = document.querySelectorAll('.day-header');
-        
         headers.forEach(header => {
             header.addEventListener('click', () => {
-                // סגור אחרים
                 headers.forEach(other => {
                     if (other !== header && other.classList.contains('active')) {
                         other.classList.remove('active');
@@ -544,10 +759,9 @@
                     }
                 });
 
-                // פתח נוכחי
                 header.classList.toggle('active');
                 const content = header.nextElementSibling;
-                if(header.classList.contains('active')){
+                if (header.classList.contains('active')) {
                     content.style.maxHeight = content.scrollHeight + "px";
                 } else {
                     content.style.maxHeight = null;
@@ -555,31 +769,340 @@
             });
         });
 
-        // 2. מטבע - לוגיקה הפוכה (כמה שקלים שווה 1 קרונה)
+        // =========================================
+        // 2) שער מטבע: Frankfurter (10 CZK בש"ח)
+        // =========================================
         async function getCurrency() {
-            const el = document.getElementById('czk-val');
+            const el = $("czk-val");
+            const sub = $("czk-sub");
             try {
-                // API חינמי, בסיס שקל
-                const res = await fetch('https://api.exchangerate-api.com/v4/latest/ILS');
+                // 1 ILS = X CZK  =>  1 CZK = 1/X ILS  =>  10 CZK = 10/X ILS
+                const res = await fetch("https://api.frankfurter.dev/v1/latest?base=ILS&symbols=CZK", { cache: "no-store" });
                 const data = await res.json();
-                
-                // הנתון שמגיע הוא: 1 שקל = X קרונות (למשל 6)
-                const rateILStoCZK = data.rates.CZK;
-                
-                // אנחנו רוצים: כמה שקלים שווה 1 קרונה? (1 לחלק ל-6)
-                const oneCZKInILS = (1 / rateILStoCZK).toFixed(2);
-                
-                el.innerText = oneCZKInILS + " ₪";
-                el.style.color = "#e3bc66"; // זהב
+
+                const ilsToCzk = data?.rates?.CZK;
+                if (!ilsToCzk) throw new Error("Missing CZK rate");
+
+                const tenCZKInILS = (10 / ilsToCzk).toFixed(2);
+                el.innerText = tenCZKInILS + " ₪";
+                el.style.color = "#e3bc66";
+                if (sub) sub.innerText = "שקלים לעשר קרונות (10 CZK)";
             } catch (e) {
                 console.error(e);
-                el.innerText = "0.15 ₪"; // ערך ברירת מחדל
-                document.querySelector('.dash-sub').innerText += " (הערכה)";
+                el.innerText = "—";
+                if (sub) sub.innerText = "לא הצלחתי למשוך שער כרגע";
             }
         }
 
-        // הפעלה בטעינה
-        getCurrency();
+        // =========================================
+        // 3) מזג אוויר: Open-Meteo (נוכחי + תחזית עד 16 ימים)
+        //    + ווידג'טים לכל יום במסלול
+        // =========================================
+        let DAILY_FORECAST = null;
+
+        function wxEmojiFromCode(code) {
+            if (code == null) return "⛅";
+            const c = Number(code);
+            if ([0].includes(c)) return "☀️";
+            if ([1,2].includes(c)) return "⛅";
+            if ([3].includes(c)) return "☁️";
+            if ([45,48].includes(c)) return "🌫️";
+            if ([51,53,55,56,57].includes(c)) return "🌦️";
+            if ([61,63,65,66,67].includes(c)) return "🌧️";
+            if ([71,73,75,77,85,86].includes(c)) return "❄️";
+            if ([80,81,82].includes(c)) return "🌧️";
+            if ([95,96,99].includes(c)) return "⛈️";
+            return "⛅";
+        }
+
+        function wxTextFromCode(code) {
+            if (code == null) return "לא ידוע";
+            const c = Number(code);
+            if (c === 0) return "בהיר";
+            if (c === 1) return "בעיקר בהיר";
+            if (c === 2) return "מעונן חלקית";
+            if (c === 3) return "מעונן";
+            if (c === 45 || c === 48) return "ערפל";
+            if ([51,53,55].includes(c)) return "טפטוף";
+            if ([56,57].includes(c)) return "טפטוף קפוא";
+            if ([61,63,65].includes(c)) return "גשם";
+            if ([66,67].includes(c)) return "גשם קפוא";
+            if ([71,73,75].includes(c)) return "שלג";
+            if (c === 77) return "גרגירי שלג";
+            if ([80,81,82].includes(c)) return "ממטרים";
+            if (c === 85 || c === 86) return "ממטרי שלג";
+            if (c === 95) return "סופות רעמים";
+            if (c === 96 || c === 99) return "סופות רעמים עם ברד";
+            return "לא ידוע";
+        }
+
+        function populateDayWidgets() {
+            if (!DAILY_FORECAST) return;
+
+            const dayEls = document.querySelectorAll(".day-wx[data-date]");
+            dayEls.forEach(el => {
+                const date = el.getAttribute("data-date");
+                const idx = DAILY_FORECAST.time.indexOf(date);
+                const descEl = el.querySelector("[data-wx-desc]");
+                const tempEl = el.querySelector("[data-wx-temp]");
+                const precipEl = el.querySelector("[data-wx-precip]");
+                const emojiEl = el.querySelector("[data-wx-emoji]");
+
+                if (idx === -1) {
+                    if (descEl) descEl.textContent = "מחוץ לחלון התחזית";
+                    if (tempEl) tempEl.textContent = "—";
+                    if (precipEl) precipEl.textContent = "—";
+                    if (emojiEl) emojiEl.textContent = "⛅";
+                    return;
+                }
+
+                const tMin = DAILY_FORECAST.temperature_2m_min?.[idx];
+                const tMax = DAILY_FORECAST.temperature_2m_max?.[idx];
+                const wxCode = DAILY_FORECAST.weather_code?.[idx];
+                const pr = DAILY_FORECAST.precipitation_probability_max?.[idx];
+
+                if (emojiEl) emojiEl.textContent = wxEmojiFromCode(wxCode);
+                if (descEl) descEl.textContent = wxTextFromCode(wxCode);
+                if (tempEl) {
+                    const tText = (tMin != null && tMax != null)
+                        ? `${Math.round(tMin)}°–${Math.round(tMax)}°`
+                        : "—";
+                    tempEl.textContent = tText;
+                }
+                if (precipEl) {
+                    precipEl.textContent = (pr != null) ? `סיכוי גשם: ${Math.round(pr)}%` : "—";
+                }
+            });
+        }
+
+        async function getWeather() {
+            const val = $("wx-val");
+            const sub = $("wx-sub");
+
+            try {
+                const url =
+                    `https://api.open-meteo.com/v1/forecast` +
+                    `?latitude=${TRIP.lat}&longitude=${TRIP.lon}` +
+                    `&current=temperature_2m,weather_code` +
+                    `&daily=temperature_2m_max,temperature_2m_min,weather_code,precipitation_probability_max` +
+                    `&forecast_days=16` +
+                    `&timezone=${encodeURIComponent(TRIP.timezone)}`;
+
+                const res = await fetch(url, { cache: "no-store" });
+                const data = await res.json();
+
+                const tNow = data?.current?.temperature_2m;
+                if (typeof tNow !== "number") throw new Error("Missing current temp");
+
+                val.innerText = `${Math.round(tNow)}°C`;
+
+                const dailyTimes = data?.daily?.time || [];
+                const tMaxArr = data?.daily?.temperature_2m_max || [];
+                const tMinArr = data?.daily?.temperature_2m_min || [];
+
+                const idx = dailyTimes.indexOf(TRIP.startDate);
+
+                if (idx !== -1 && tMaxArr[idx] != null && tMinArr[idx] != null) {
+                    sub.innerText = `לתאריך ${TRIP.startDate}: ${Math.round(tMinArr[idx])}°–${Math.round(tMaxArr[idx])}°`;
+                } else {
+                    const d = daysFromToday(TRIP.startDate);
+                    if (d > 16) {
+                        sub.innerText = `תחזית לשבוע הטיול תופיע קרוב יותר לתאריך (עד 16 ימים קדימה).`;
+                    } else {
+                        sub.innerText = `עוד מעט אמור להיכנס לחלון התחזית (עד 16 ימים).`;
+                    }
+                }
+
+                // לכל יום במסלול
+                DAILY_FORECAST = data?.daily || null;
+                populateDayWidgets();
+
+            } catch (e) {
+                console.error(e);
+                val.innerText = "—";
+                sub.innerText = "לא הצלחתי למשוך נתוני מזג אוויר כרגע.";
+                DAILY_FORECAST = null;
+                populateDayWidgets();
+            }
+        }
+
+        // =========================================
+        // 4) טיסות: Aviationstack (flightsFuture לטווח >7 ימים; timetable לטווח קרוב)
+        // =========================================
+
+        function buildAviationstackUrl({ endpoint, params }) {
+            const qs = new URLSearchParams({ access_key: AVIATIONSTACK_API_KEY, ...params });
+            return `https://api.aviationstack.com/v1/${endpoint}?${qs.toString()}`;
+        }
+
+        function requestJsonp(url) {
+            return new Promise((resolve, reject) => {
+                const cbName = "cb_" + Math.random().toString(36).slice(2);
+                const script = document.createElement("script");
+                const timeout = setTimeout(() => {
+                    cleanup();
+                    reject(new Error("JSONP timeout"));
+                }, 12000);
+
+                function cleanup() {
+                    clearTimeout(timeout);
+                    script.remove();
+                    try { delete window[cbName]; } catch (_) { window[cbName] = undefined; }
+                }
+
+                window[cbName] = (payload) => {
+                    cleanup();
+                    resolve(payload);
+                };
+
+                // aviationstack תומך callback=... ל-JSONP
+                script.src = url + `&callback=${encodeURIComponent(cbName)}`;
+                script.onerror = () => {
+                    cleanup();
+                    reject(new Error("JSONP network error"));
+                };
+                document.head.appendChild(script);
+            });
+        }
+
+        async function requestAviationstack(url) {
+            // ניסיון fetch רגיל; אם נופל (CORS/רשת) - JSONP
+            try {
+                const res = await fetch(url, { cache: "no-store" });
+                const data = await res.json();
+                return data;
+            } catch (e) {
+                // fallback ל-JSONP
+                return await requestJsonp(url);
+            }
+        }
+
+        function normalizeStatus(raw) {
+            const s = (raw || "").toLowerCase();
+            // aviationstack מדבר על scheduled/active/landed/cancelled/incident/diverted/unknown
+            if (!s) return "לא ידוע";
+            if (s === "scheduled") return "מתוכננת";
+            if (s === "active") return "בטיסה עכשיו 🛫";
+            if (s === "landed") return "נחתה ✅";
+            if (s === "cancelled") return "בוטלה ❌";
+            if (s === "incident") return "אירוע חריג ⚠️";
+            if (s === "diverted") return "הוסטה ✈️";
+            if (s === "unknown") return "לא ידוע";
+            return raw;
+        }
+
+        function updateFlightUI(f, flightObj, sourceLabel) {
+            const { depId, arrId, statusId } = f.ui;
+
+            const statusRaw = pick(flightObj, ["flight_status", "status"]);
+            const depTime = pick(flightObj, ["departure.actual", "departure.estimated", "departure.scheduled"]);
+            const arrTime = pick(flightObj, ["arrival.actual", "arrival.estimated", "arrival.scheduled"]);
+
+            if (depTime) safeSetText(depId, fmtHM(depTime));
+            if (arrTime) safeSetText(arrId, fmtHM(arrTime));
+
+            const statusText = normalizeStatus(statusRaw);
+            const suffix = sourceLabel ? ` • ${sourceLabel}` : "";
+            safeSetText(statusId, ` • ${statusText}${suffix}`);
+        }
+
+        function findFlightInList(list, f) {
+            // list = data.data (מערך)
+            // התאמה לפי airline_iata + flight_number
+            const targetAirline = (f.airlineIata || "").toUpperCase();
+            const targetNumber = String(f.flightNumber || "").trim();
+
+            return list.find(x => {
+                const airline = String(pick(x, ["airline.iata", "airline_iata"]) || "").toUpperCase();
+                const number = String(pick(x, ["flight.number", "flight_number"]) || "").trim();
+                const dep = String(pick(x, ["departure.iata"]) || "").toUpperCase();
+                const arr = String(pick(x, ["arrival.iata"]) || "").toUpperCase();
+
+                const matchFlight = airline === targetAirline && number === targetNumber;
+                const matchRoute = (!f.depAirportIata || dep === f.depAirportIata) && (!f.arrAirportIata || arr === f.arrAirportIata);
+
+                return matchFlight && matchRoute;
+            });
+        }
+
+        async function fetchFlightDataOne(f) {
+            const statusEl = $(f.ui.statusId);
+
+            if (!AVIATIONSTACK_API_KEY || AVIATIONSTACK_API_KEY === "81a63b2731c7d0dfd08f9c40d0d8c429"
+) {
+                if (statusEl) statusEl.textContent = " • (משתדל להתעדכן אונליין)";
+                return;
+            }
+
+            const date = toISODate(f.date);
+            const d = daysFromToday(date);
+
+            // flightsFuture: לפי התיעוד, רק אם התאריך גדול מ-7 ימים קדימה
+            const useFuture = d >= 8;
+
+            const endpoint = useFuture ? "flightsFuture" : "timetable";
+            const params = useFuture
+                ? {
+                    iataCode: f.depAirportIata,
+                    type: "departure",
+                    date: date,
+                    airline_iata: f.airlineIata,
+                    flight_number: `${f.airlineIata}${f.flightNumber}` // דוגמה בתיעוד: AF1135
+                  }
+                : {
+                    iataCode: f.depAirportIata,
+                    type: "departure",
+                    airline_iata: f.airlineIata,
+                    flight_number: `${f.airlineIata}${f.flightNumber}`
+                  };
+
+            // הערה: לפי התיעוד של aviationstack, flight_number בדוגמא הוא בפורמט כמו AF1135 (כלומר Airline+Number).
+            // אם אצלך זה חוזר ריק, תשנה ל- flight_number: f.flightNumber בלבד.
+
+            const url = buildAviationstackUrl({ endpoint, params });
+
+            try {
+                const data = await requestAviationstack(url);
+
+                if (data?.error) {
+                    safeSetText(f.ui.statusId, ` • (שגיאת API: ${data.error.message || "לא ידוע"})`);
+                    return;
+                }
+
+                const list = data?.data;
+                if (!Array.isArray(list) || list.length === 0) {
+                    safeSetText(f.ui.statusId, " • (לא נמצא מידע עדכני)");
+                    return;
+                }
+
+                const match = findFlightInList(list, f) || list[0];
+                updateFlightUI(f, match, useFuture ? "לו״ז" : "היום");
+            } catch (e) {
+                console.error(e);
+                safeSetText(f.ui.statusId, " • (שגיאת רשת/שרת)");
+            }
+        }
+
+        async function loadFlights() {
+            await fetchFlightDataOne(TRIP.flights.outbound);
+            await fetchFlightDataOne(TRIP.flights.inbound);
+        }
+
+        // =========================================
+        // הפעלה ורענון
+        // =========================================
+        document.addEventListener("DOMContentLoaded", () => {
+            getCurrency();
+            getWeather();
+            loadFlights();
+
+            // רענון הגיוני (לא חופר)
+            setInterval(getCurrency, 60 * 60 * 1000); // כל שעה
+            setInterval(getWeather, 15 * 60 * 1000);  // כל 15 דקות
+
+            // טיסות: מספיק פעם בכמה שעות (וגם תלוי במגבלת API)
+            setInterval(loadFlights, 6 * 60 * 60 * 1000); // כל 6 שעות
+        });
     </script>
 
 </body>
